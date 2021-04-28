@@ -1,24 +1,31 @@
 
-function translate(args){
-    const digitWord = ["Zero","One","Two","Three","Four","Five","Six","Seven","Eight","Nine"]
-    for(let i = 0; i < args.length;i++){
-        number = args[i];
-        let digits = []
-
-        while(number >10){
-            console.log(number)
-            digits.push(number%10)
-            number = Math.floor(number / 10);
-        }
-
-        digits.push(number)
-        let result = ""
-        for(let j =digits.length-1; j >=0; j--){
-            result+= digitWord[digits[j]]
-        }
-        console.log(result)
+function divideTen(num){
+    let digits = [];
+    while(num >= 10){
+        digits.push(num%10);
+        num = Math.floor(num/10);
     }
-
+    digits.push(num);
+    return digits;
 }
 
-translate([3,25,209])
+
+function translate(nums){
+    const digitWord = ["Zero","One","Two","Three","Four","Five","Six","Seven","Eight","Nine"]
+    let results =[];
+    for(let i = 0; i < nums.length;i++){
+        num = nums[i];
+        digits =divideTen(num);
+        let curWord = [];
+        for(let j =digits.length-1; j >=0; j--){
+            curWord.push(digitWord[digits[j]]);
+        }
+        results.push(curWord.join(""));
+    }
+    console.log(results.join());
+}
+
+
+var args = process.argv.slice(2);
+translate(args)
+//translate([3,305,5])
