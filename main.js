@@ -28,4 +28,3 @@ function translate(nums){
 
 var args = process.argv.slice(2);
 translate(args)
-//translate([3,305,5])
